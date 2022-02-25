@@ -11,8 +11,11 @@ output:
       slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
+      highlightSpans: true
       ratio: 16:9
       countIncrementalSlides: true
+    includes:
+      after_body: insert-logo.html
 ---
 
 ```{r setup, include=FALSE}
@@ -36,12 +39,6 @@ style_duo_accent(
   inverse_header_color = "#FFFFFF"
 )
 ```
-
-background-image: url(https://github.com/jravilab.png)
-
-???
-
-Image credit: [Wikimedia Commons](https://github.com/jravilab.png)
 
 ---
 class: top
@@ -256,83 +253,6 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 
 
 ---
-# remark.js vs xaringan
-
-Some differences between using remark.js (left) and using **xaringan** (right):
-
-.pull-left[
-1. Start with a boilerplate HTML file;
-
-1. Plain Markdown;
-
-1. Write JavaScript to autoplay slides;
-
-1. Manually configure MathJax;
-
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
-]
-
-.pull-right[
-1. Start with an R Markdown document;
-
-1. R Markdown (can embed R/other code chunks);
-
-1. Provide an option `autoplay`;
-
-1. MathJax just works;<sup>*</sup>
-
-1. Highlight code with `{{}}`;
-
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
-]
-
-.footnote[[*] Not really. See next page.]
-
----
-
-# Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
-
-```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-
-Limitations:
-
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-1. There should not be spaces after the opening `$` or before the closing `$`.
-
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
-
----
-
-# R Code
-
-```{r comment='#'}
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
-dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
-grep('天', dojutsu, value = TRUE)
-```
-
----
-
-# R Plots
-
-```{r cars, eval=FALSE, fig.height=4}
-par(mar = c(4, 4, 1, .1))
-plot(cars, pch = 19, col = 'darkgray', las = 1)
-abline(fit, lwd = 2)
-```
-
----
 
 # Tables
 
@@ -341,16 +261,203 @@ If you want to generate a table, make sure it is in the HTML format (instead of 
 ```{r}
 knitr::kable(head(iris), format = 'html')
 ```
+---
+# Tables with dynamic filtering
+```{r eval=require('DT'), tidy=FALSE}
+DT::datatable(
+  head(gapminder, 10),
+  fillContainer = FALSE, options = list(pageLength = 5))
+```
+
+
 
 ---
 
-# HTML Widgets
+# Math Expressions
 
-I have not thoroughly tested HTML widgets against **xaringan**. Some may work well, and some may not. It is a little tricky.
+You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
 
-Similarly, the Shiny mode (`runtime: shiny`) does not work. I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app. When I need to demonstrate more complicated examples, I just launch them separately. It is convenient to share slides with other people when they are plain HTML/JS applications.
+```{}
+$$EWCos_{j} = Cos(v_{dis}(S),EWlogFC_{j})$$
+```
 
-See the next page for two HTML widgets.
+$$EWCos_{j} = Cos(v_{dis}(S),EWlogFC_{j})$$
+
+
+---
+
+# DataViz
+.pull-left[
+```{r echo=T, eval=F, fig.width=8, fig.height=3}
+ggplot(gapminder) +
+  aes(x=gdpPercap, y=lifeExp,
+      size=pop, color=country) +
+  geom_point(show.legend=FALSE) +
+  facet_wrap(~year)
+```
+]
+.pull-right[
+```{r echo=F, eval=T, fig.width=5, fig.height=4}
+ggplot(gapminder) +
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~year)
+```
+]
+
+---
+# DataViz
+### The code
+```{r gapminder-static1, layout="l-body-outset", fig.width=4, fig.height=3, echo=TRUE, eval=F}
+library(tidyverse)
+library(gapminder)
+static_plot <- ggplot(gapminder,
+                     aes(gdpPercap, lifeExp,
+                         size = pop, colour = country)) +
+	geom_point(alpha = 0.7, show.legend = FALSE) +
+	scale_colour_manual(values = country_colors) +
+	scale_size(range = c(2, 12)) +
+	scale_x_log10() + theme_minimal() +
+	facet_wrap(~continent)
+static_plot
+```
+
+---
+# DataViz
+### The plot
+```{r gapminder-static2, layout="l-body-outset", fig.width=4, fig.height=3, echo=F, eval=TRUE}
+library(tidyverse)
+library(gapminder)
+static_plot <- ggplot(gapminder,
+                     aes(gdpPercap, lifeExp,
+                         size = pop, colour = country)) +
+	geom_point(alpha = 0.7, show.legend = FALSE) +
+	scale_colour_manual(values = country_colors) +
+	scale_size(range = c(2, 12)) +
+	scale_x_log10() + theme_minimal() +
+	facet_wrap(~continent)
+static_plot
+```
+
+---
+# DataViz
+### The code
+```{r gapminder-gganimate1, layout="l-body-outset", fig.width=4, fig.height=3, echo=TRUE, eval=F}
+library(gganimate)
+animated_plot <- ggplot(gapminder,
+                        aes(gdpPercap, lifeExp,
+                            size = pop, colour = country)) +
+	geom_point(alpha = 0.7, show.legend = FALSE) +
+	scale_colour_manual(values = country_colors) +
+	scale_size(range = c(2, 12)) +
+	scale_x_log10() + theme_minimal() +
+	facet_wrap(~continent) +
+	# Here comes the gganimate specific bits              #<<
+	labs(title = 'Year: {frame_time}', # labels           #<<
+       x = 'GDP per capita', y = 'life expectancy') +   #<<
+	transition_time(year) + # the dynamic variable        #<<
+	ease_aes('linear')                                    #<<
+animated_plot
+```
+---
+# DataViz
+### The plot
+```{r gapminder-gganimate2, layout="l-body-outset", fig.width=4, fig.height=3, echo=F, eval=T}
+library(gganimate)
+animated_plot <- ggplot(gapminder,
+                        aes(gdpPercap, lifeExp,
+                            size = pop, colour = country)) +
+	geom_point(alpha = 0.7, show.legend = FALSE) +
+	scale_colour_manual(values = country_colors) +
+	scale_size(range = c(2, 12)) +
+	scale_x_log10() + theme_minimal() +
+	facet_wrap(~continent) +
+	# Here comes the gganimate specific bits              #<<
+	labs(title = 'Year: {frame_time}', # labels           #<<
+       x = 'GDP per capita', y = 'life expectancy') +   #<<
+	transition_time(year) + # the dynamic variable        #<<
+	ease_aes('linear')                                    #<<
+animated_plot
+```
+
+---
+# Saving your data
+```{r ggsave, eval=F, echo=TRUE}
+library(tidyverse)
+# Save your file name
+plot1 <- "gapminder_static_plot.png"
+
+# Save your absolute/relative path
+my_full_path <- here("gapminder")
+
+# To save as a tab-delimited text file ...
+{{ggsave(filename=plot1, 
+       plot=static_plot, 
+       device="png",     
+       path=my_full_path,
+       dpi=300)  }}
+
+```
+
+---
+# Saving your data
+
+
+
+
+---
+
+# Some Tips
+
+
+---
+# The fun w/ programming
+.center[
+```{r echo=F, out.width='70%', fig.alt="GAdenBuie Tidyexplain gif for long to wide data transformation"}
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/other-stats-artwork/debugging.jpg")
+```
+]
+
+---
+# Do more with R
+- Draft a **Manuscript** | [jravilab.github.io/connectivity_scores](//jravilab.github.io/connectivity_scores)
+- Create a **Website** | [jravilab.github.io](//jravilab.github.io)
+- **Present** your data | this one, [jananiravi.github.io/R_intro](//jananiravi.github.io/R_intro)
+- Create a **Web application**  | [jravilab.org/molevolvr](http://jravilab.org/molevolvr)
+- Write your **Thesis**
+
+.right[
+
+```{r echo=F, out.width='20%', fig.alt="You can do it; A digital cartoon with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says 'at first I was like...' The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads 'but now it's like...'"}
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/r_first_then.png")
+```
+
+]
+
+---
+# Acknowledgments
+- GARD 2022 | Vangie & Chelsie
+- Slides created via the R package [xaringan](https://github.com/yihui/xaringan) built with [remark.js](https://remarkjs.com), [knitr](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
+- Cartoons from Allison Horst.
+- [JRaviLab](https://jravilab.github.io) | [Krishnan Lab](https://thekrishnanlab.org)
+- [R-Ladies East Lansing](https://rladies-eastlansing.github.io) | [Women+ Data SCience](https://women-plus-datascience.github.io) | [AsiaR](//github.com/AsiaR-community)
+
+.pull-left[
+### How to reach us
+janani@msu.edu | [@jravilab](//twitter.com/jravilab) | [jravilab.github.io](//jravilab.github.io)
+
+You can access all relevant material pertaining to this workshop [here](https://github.com/jananiravi/R_intro).
+]
+
+.pull-right[
+```{r echo=F, fig.align='right', out.width='40%', fig.alt="Baracktocat, GitHub Octocat with 'Yes we code' election themed poster"}
+knitr::include_graphics("https://octodex.github.com/images/baracktocat.jpg")
+```
+]
+
+---
+
+---
 
 ---
 
@@ -358,68 +465,3 @@ See the next page for two HTML widgets.
 library(leaflet)
 leaflet() %>% addTiles() %>% setView(-93.65, 42.0285, zoom = 17)
 ```
-
----
-
-```{r eval=require('DT'), tidy=FALSE}
-DT::datatable(
-  head(iris, 10),
-  fillContainer = FALSE, options = list(pageLength = 8)
-)
-```
-
----
-
-# Some Tips
-
-
----
-# Debugging
-```{r echo=F, out.width='50%', fig.alt="GAdenBuie Tidyexplain gif for long to wide data transformation"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/other-stats-artwork/debugging.jpg")
-```
-
----
-# Some Tips
-
-When you enable line-highlighting, you can also use the chunk option `highlight.output` to highlight specific lines of the text output from a code chunk. For example, `highlight.output = TRUE` means highlighting all lines, and `highlight.output = c(1, 3)` means highlighting the first and third line.
-
-````md
-`r ''````{r, highlight.output=c(1, 3)}
-head(iris)
-```
-````
-
-```{r, highlight.output=c(1, 3), echo=FALSE}
-head(iris)
-```
-
-Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about R's recycling of vectors)
-
----
-
-# Some Tips
-
-- To make slides work offline, you need to download a copy of remark.js in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
-
-- You can use `xaringan::summon_remark()` to download the latest or a specified version of remark.js. By default, it is downloaded to `libs/remark-latest.min.js`.
-
-- Then change the `chakra` option in YAML to point to this file, e.g.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        chakra: libs/remark-latest.min.js
-    ```
-
-- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
-
-
----
-
-class: center, middle
-
-# Acknowledgments
-- GARD 2022 | Vangie & Chelsie
-- Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) built with [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
-- Cartoons from Allison Horst.
