@@ -1,9 +1,9 @@
 ---
-title: "R@GARD"
-subtitle: "Intro to R programming<br/>"
-author: "Janani Ravi<br/>⚔"
-institute: "Michigan State University<br/>R-Ladies East Lansing, Women+ Data Science, AsiaR<br/>"
-date: "2022/02/25<br/>janani@msu.edu | @janani137 | jravilab.github.io"
+title: "R@GARD | Intro to R programming"
+subtitle: "<br/>"
+author: "JANANI RAVI<br/>" #⚔
+institute: "Michigan State University | RLEL, W+DS, AsiaR<br/>"
+date: "janani@msu.edu | @janani137 | jravilab.github.io"
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -13,7 +13,7 @@ output:
       highlightLines: true
       highlightSpans: true
       ratio: 16:9
-      countIncrementalSlides: true
+      countIncrementalSlides: false
     includes:
       after_body: insert-logo.html
 ---
@@ -35,14 +35,16 @@ knitr::opts_chunk$set(
 library(xaringanthemer)
 style_duo_accent(
   primary_color = "#000000",
-  secondary_color = "#4053BF",
+  secondary_color = "#43418A",
   inverse_header_color = "#FFFFFF"
 )
+# style_duo(primary_color = "#1F4257",
+#           secondary_color = "#F97B64")
+#style_mono_accent_inverse(base_color = "#3C989E")
+#style_mono_accent(base_color = "#43418A")
 ```
 
 ---
-class: top
-
 # Why R?
 .pull-left[
 ### R is free
@@ -62,18 +64,32 @@ knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw
 
 ---
 # Why R?
-.pull-left[
-### R is fun!
-]
+**R is fun!**
 
-.pull-right[
-```{r, out.width='50%', echo=FALSE, fig.align='bottom', fig.alt="beepr: A cartoon alligator running excitedly toward a computer with musical notes coming out of it. Text reads 'beepr::beep()s when your analysis is done running!'"}
+.pull-left[
+`beeper::beep(3)`
+
+```{r, out.width='70%', echo=FALSE, fig.alt="beepr: A cartoon alligator running excitedly toward a computer with musical notes coming out of it. Text reads 'beepr::beep()s when your analysis is done running!'"}
 knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/beepr.jpg')
 ```
 ]
+
+.pull-right[
+`Rcade::games$Pacman` & `Rcade::games$`2048``
+
+```{r, out.width='30%', echo=FALSE, fig.alt="Pacman from the Rcade package with the four characters, Blinky, Pinky, Inky, and Clyde"}
+knitr::include_graphics('img/rcade_pacman.png')
+```
+
+```{r, out.width='20%', echo=FALSE, fig.alt="Rcade package snapshot of the 2048 game"}
+knitr::include_graphics('img/rcade_2048.png')
+```
+]
+
 ---
 # R community
 A few global R communities in addition to RFoundation, RForwards, RStudio, and the Rconsortium.
+
 .pull-left[
 
 ```{r echo=F, out.width='25%', fig.alt="8 R community logos: rOpenSci, useR, R-Ladies, AfricaR, ArabR, AsiaR, miR, LatinR"}
@@ -105,7 +121,7 @@ knitr::include_graphics("https://github.com/LatinR/latinr/raw/master/man/figures
 ]
 
 .pull-right[
-```{r out.width='70%', echo=F, fig.alt="RStats community logo again by Allison Horst"}
+```{r out.width='60%', echo=F, fig.alt="RStats community logo again by Allison Horst"}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/code_hero.jpg")
 ```
 ]
@@ -113,26 +129,29 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 --
 
 ```{r out.width='50%', echo=F, fig.alt="RUG and RLadies chapter stats"}
-knitr::include_graphics("202202-rugs-meetup-stats.png")
-knitr::include_graphics("202202-rladies-meetup-stats.png")
+knitr::include_graphics("img/202202-rugs-meetup-stats.png")
+knitr::include_graphics("img/202202-rladies-meetup-stats.png")
 ```
 
 ---
 # We all go through the 'stages of R'
 
-```{r, out.width='60%', echo=FALSE, fig.align='bottom', fig.alt="R Knowledge Rollercoaster: An illustrated cartoon graph with 'How much I think I know about R' on the y-axis, with axis labels at 'I know nothing' and 'I know lots', versus 'time' on the x-axis. The line varies widely between the two. Above the line are emoji-like faces, showing uncertainty and hope early on. At a second peak is the label 'join R community on twitter', with a 'mind-blown' emoji face. The line quickly descends, but with a happy looking emoji character sliding down it."}
+.center[
+```{r, out.width='70%', echo=FALSE, fig.align='bottom', fig.alt="R Knowledge Rollercoaster: An illustrated cartoon graph with 'How much I think I know about R' on the y-axis, with axis labels at 'I know nothing' and 'I know lots', versus 'time' on the x-axis. The line varies widely between the two. Above the line are emoji-like faces, showing uncertainty and hope early on. At a second peak is the label 'join R community on twitter', with a 'mind-blown' emoji face. The line quickly descends, but with a happy looking emoji character sliding down it."}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/r_rollercoaster.png")
 ```
+]
 
 ---
 # What can you do with R?
-- Data wrangling | knowing about your data
-- Data analysis & summarization | including RStats
-- Data visualization
-- Reproducible Research
-- Data visualization & graphical summaries
-- Interactive web apps
-- and more...
+#### Data wrangling | knowing about your data
+#### Data analysis & summarization | including RStats
+#### Data visualization & graphical summaries
+#### Reproducible Research
+#### Manuscripts, Books, Thesis
+#### Interactive web apps
+#### Webpages, blogs
+#### and more...
 
 ---
 class: inverse, center, middle
@@ -166,13 +185,9 @@ knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2014/04/tidy
 knitr::include_graphics("https://www.gapminder.org/wp-content/themes/gapminder2/images/gapminder-logo.svg")
 ```
 
---
-
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
-
 
 ---
-# Data import
+# Importing your data
 ```{r data-import, eval=FALSE, echo=TRUE}
 library(tidyverse)
 read_csv(file="my_data.csv",
@@ -212,6 +227,7 @@ glimpse(gapminder)	# Info-dense summary of the data
 
 ---
 # Viewing your data
+**A quick tabulated snapshot**
 ```{r}
 library(knitr)
 kable(head(gapminder::gapminder), format = 'html')
@@ -219,60 +235,107 @@ kable(head(gapminder::gapminder), format = 'html')
 
 ---
 # Viewing your data
+**Your full data!**
 ```{r paged_table, layout="l-body-outset"}
 library(rmarkdown)
 paged_table(gapminder::gapminder)
 ```
 
 ---
-# Tidy up your data
+# Viewing your data
+**w/ dynamic filtering**
+```{r eval=require('DT'), tidy=FALSE}
+library(gapminder)
+DT::datatable(
+  head(gapminder, 1000),
+  fillContainer = FALSE, options = list(pageLength = 5))
+```
+
+---
+# Tidying your data
 .center[
 ```{r echo=F, out.width='70%', fig.alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading 'our columns are variables and our rows are observations!'. Text to the left of that group reads 'The standard structure of tidy data means that 'tidy datasets are all alike...' The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) 'my column are values and my rows are variables', 'I have variables in columns AND in rows', 'I have multiple variables in a single column', and 'I don’t even KNOW what my deal is.' Next to the frazzled data tables is text '...but every messy dataset is messy in its own way. -Hadley Wickham.'"}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/tidydata_2.jpg")
 ```
 ]
+
 ---
-# Tidy up your data
+# Tidying your data
+```{r tidyr, echo=TRUE, eval=FALSE}
+pivot_longer()  # wide -> long
+pivot_wider()   # long -> wide
+separate()	    # Separate 1 COLUMN -> many COLUMNS
+unite()		      # Unite several COLUMNS -> 1 COLUMN
+```
+
+---
+# Tidying your data
+.center[
 ```{r echo=F, out.width='40%', fig.alt="GAdenBuie Tidyexplain gif for long to wide data transformation"}
 knitr::include_graphics("https://github.com/gadenbuie/tidyexplain/raw/main/images/tidyr-pivoting.gif")
 ```
+]
 
 ---
-# Tidy up your data
+# Tidying your data
+.center[
 ```{r echo=F, out.width='50%', fig.alt="GAdenBuie Tidyexplain gif for gather & spread data transformation"}
 knitr::include_graphics("https://github.com/gadenbuie/tidyexplain/raw/main/images/tidyr-spread-gather.gif")
 ```
----
+]
 
 ---
-# Filter your data
+# Wrangling your data
+```{r dplyr, echo=TRUE, eval=FALSE}
+filter()	# PICK observations by their values | ROWS
+select()	# PICK variables by their names | COLUMNS
+mutate()	# CREATE new variables w/ functions of existing variables | COLUMNS
+transmute()	# COMPUTE 1 or more COLUMNS but drop original columns
+arrange()	# REORDER the ROWS
+summarize()	# COLLAPSE many values to a single SUMMARY
+group_by()	# GROUP data into rows with the same value of variable (COLUMN)
+```
 
+---
+# Wrangling your data
+**w/ filter**
+.center[
 ```{r echo=F, out.width='70%', fig.alt="Allison Horst dply::filter. Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is 'otter' and the site is 'bay', a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads 'dplyr::filter() - keep rows that satisfy your conditions.'"}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/dplyr_filter.jpg")
 ```
-
+]
 
 ---
+# Wrangling your data
+```{r filter1, echo=TRUE, eval=F}
+head(gapminder)	# Snapshot of the dataframe
+# Now, filter by year and look at only the data from the year 1962
+filter(gapminder, year==1962)
 
-# Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r}
-knitr::kable(head(iris), format = 'html')
+# Can be rewritten using "Piping" %>%
+gapminder %>%	# Pipe ('then') operator to serially connect operations
+	filter(year==1962)
+# Filter for China in 2002
+gapminder %>%
+	filter(year==2002,
+				 country=="China")
 ```
+
 ---
-# Tables with dynamic filtering
-```{r eval=require('DT'), tidy=FALSE}
-DT::datatable(
-  head(gapminder, 10),
-  fillContainer = FALSE, options = list(pageLength = 5))
+# Wrangling your data
+```{r filter2, echo=F, eval=T}
+gapminder %>%	# Pipe ('then') operator to serially connect operations
+	filter(year==1962)
+```
+***
+```{r filter3, echo=F, eval=T}
+# Filter for China in 2002
+gapminder %>%
+	filter(year==2002,
+				 country=="China")
 ```
 
-
-
 ---
-
 # Math Expressions
 
 You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
@@ -282,33 +345,45 @@ $$EWCos_{j} = Cos(v_{dis}(S),EWlogFC_{j})$$
 ```
 
 $$EWCos_{j} = Cos(v_{dis}(S),EWlogFC_{j})$$
-
+--
+Check out a math-riddled manuscript written with RMarkdown:
+[jravilab.github.io/connectivity_scores](//jravilab.github.io/connectivity_scores)
 
 ---
 
-# DataViz
-.pull-left[
+# Visualizing your data
 ```{r echo=T, eval=F, fig.width=8, fig.height=3}
 ggplot(gapminder) +
-  aes(x=gdpPercap, y=lifeExp,
-      size=pop, color=country) +
-  geom_point(show.legend=FALSE) +
-  facet_wrap(~year)
+  aes(x=gdpPercap, y=lifeExp, size=pop, color=country) +
+  geom_point(show.legend=FALSE)
 ```
-]
-.pull-right[
-```{r echo=F, eval=T, fig.width=5, fig.height=4}
+--
+```{r echo=F, eval=T, out.width='60%'}
+ggplot(gapminder) +
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
+  geom_point(show.legend = FALSE)
+```
+
+---
+# Visualizing your data
+```{r echo=T, eval=F, fig.width=8}
+ggplot(gapminder) +
+  aes(x=gdpPercap, y=lifeExp, size=pop, color=country) +
+  geom_point(show.legend=FALSE) +
+  {{facet_wrap(~year)}}
+```
+```{r echo=F, eval=T, out.width='60%'}
 ggplot(gapminder) +
   aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
   geom_point(show.legend = FALSE) +
   facet_wrap(~year)
 ```
-]
 
 ---
-# DataViz
-### The code
-```{r gapminder-static1, layout="l-body-outset", fig.width=4, fig.height=3, echo=TRUE, eval=F}
+# Visualizing your data
+**The code**
+
+```{r gapminder-static1, layout="l-body-outset", echo=TRUE, eval=F}
 library(tidyverse)
 library(gapminder)
 static_plot <- ggplot(gapminder,
@@ -323,9 +398,10 @@ static_plot
 ```
 
 ---
-# DataViz
-### The plot
-```{r gapminder-static2, layout="l-body-outset", fig.width=4, fig.height=3, echo=F, eval=TRUE}
+# Visualizing your data
+**The plot**
+
+```{r gapminder-static2, layout="l-body-outset", fig.width=6, echo=F, eval=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(gapminder)
 static_plot <- ggplot(gapminder,
@@ -340,44 +416,46 @@ static_plot
 ```
 
 ---
-# DataViz
-### The code
-```{r gapminder-gganimate1, layout="l-body-outset", fig.width=4, fig.height=3, echo=TRUE, eval=F}
+# Visualizing your data
+**The code**
+
+```{r gapminder-gganimate1, layout="l-body-outset", echo=TRUE, eval=F}
 library(gganimate)
-animated_plot <- ggplot(gapminder,
-                        aes(gdpPercap, lifeExp,
-                            size = pop, colour = country)) +
-	geom_point(alpha = 0.7, show.legend = FALSE) +
-	scale_colour_manual(values = country_colors) +
-	scale_size(range = c(2, 12)) +
-	scale_x_log10() + theme_minimal() +
-	facet_wrap(~continent) +
-	# Here comes the gganimate specific bits              #<<
-	labs(title = 'Year: {frame_time}', # labels           #<<
+ggplot(gapminder,
+       aes(gdpPercap, lifeExp,
+           size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() + theme_minimal() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits              #<<
+  labs(title = 'Year: {frame_time}', # labels           #<<
        x = 'GDP per capita', y = 'life expectancy') +   #<<
-	transition_time(year) + # the dynamic variable        #<<
-	ease_aes('linear')                                    #<<
-animated_plot
+  transition_time(year) + # the dynamic variable        #<<
+  ease_aes('linear')                                    #<<
 ```
+
 ---
-# DataViz
-### The plot
-```{r gapminder-gganimate2, layout="l-body-outset", fig.width=4, fig.height=3, echo=F, eval=T}
-library(gganimate)
-animated_plot <- ggplot(gapminder,
-                        aes(gdpPercap, lifeExp,
-                            size = pop, colour = country)) +
-	geom_point(alpha = 0.7, show.legend = FALSE) +
-	scale_colour_manual(values = country_colors) +
-	scale_size(range = c(2, 12)) +
-	scale_x_log10() + theme_minimal() +
-	facet_wrap(~continent) +
-	# Here comes the gganimate specific bits              #<<
-	labs(title = 'Year: {frame_time}', # labels           #<<
-       x = 'GDP per capita', y = 'life expectancy') +   #<<
-	transition_time(year) + # the dynamic variable        #<<
-	ease_aes('linear')                                    #<<
-animated_plot
+# Visualizing your data
+[**The plot**](https://jananiravi.github.io/workshop-tidyverse/gapminder/workshop-tidyverse-gapminder#gganimate)
+
+```{r gapminder-gganimate2, layout="l-body-outset", out.width='80%', echo=F, eval=T, message=FALSE, warning=FALSE}
+library(gganimate); library(tidyverse)
+ggplot(gapminder,
+       aes(gdpPercap, lifeExp,
+           size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() + theme_minimal() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits          
+  labs(title = 'Year: {frame_time}', # labels       
+       x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) + # the dynamic variable     
+  ease_aes('linear')                                 
+
 ```
 
 ---
@@ -400,18 +478,7 @@ my_full_path <- here("gapminder")
 ```
 
 ---
-# Saving your data
-
-
-
-
----
-
-# Some Tips
-
-
----
-# The fun w/ programming
+# Have fun w/ programming
 .center[
 ```{r echo=F, out.width='70%', fig.alt="GAdenBuie Tidyexplain gif for long to wide data transformation"}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/other-stats-artwork/debugging.jpg")
@@ -420,16 +487,20 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 
 ---
 # Do more with R
+.left[
 - Draft a **Manuscript** | [jravilab.github.io/connectivity_scores](//jravilab.github.io/connectivity_scores)
 - Create a **Website** | [jravilab.github.io](//jravilab.github.io)
 - **Present** your data | this one, [jananiravi.github.io/R_intro](//jananiravi.github.io/R_intro)
 - Create a **Web application**  | [jravilab.org/molevolvr](http://jravilab.org/molevolvr)
 - Write your **Thesis**
+- Material: github.com/rladies-eastlansing
+]
 
 .right[
 
-```{r echo=F, out.width='20%', fig.alt="You can do it; A digital cartoon with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says 'at first I was like...' The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads 'but now it's like...'"}
+```{r echo=F, out.width='20%', fig.alt="You can do it"}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/r_first_then.png")
+#; A digital cartoon with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says: at first I was like... The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads: but now it's like...
 ```
 
 ]
@@ -461,7 +532,7 @@ knitr::include_graphics("https://octodex.github.com/images/baracktocat.jpg")
 
 ---
 
-```{r out.width='100%', fig.height=6, eval=require('leaflet')}
+```{r eval=F, out.width='100%', fig.height=6, eval=require('leaflet')}
 library(leaflet)
 leaflet() %>% addTiles() %>% setView(-93.65, 42.0285, zoom = 17)
 ```
