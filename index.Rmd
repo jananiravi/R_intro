@@ -58,7 +58,7 @@ style_duo_accent(
 .pull-right[
 ### R has a strong community!
 ```{r, out.width='60%', echo=FALSE, fig.align='bottom', fig.alt="RStats community by Allison Horst: A person in a cape that reads 'code hero' who looks like they are flying through the air while typing on a computer while saying 'I’m doing a think all on my own!' The coder’s arms and legs have ropes attached to two hot air balloons lifting them up, with labels on the balloons including 'teachers', 'bloggers', 'friends', 'developers'. Below the code hero, several people carry a trampoline with labels 'support' and 'community' that will catch them if they fall"}
-knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/code_hero.jpg')
+knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/code_hero.jpg')
 ```
 ]
 
@@ -70,7 +70,7 @@ knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw
 `beeper::beep(3)`
 
 ```{r, out.width='70%', echo=FALSE, fig.alt="beepr: A cartoon alligator running excitedly toward a computer with musical notes coming out of it. Text reads 'beepr::beep()s when your analysis is done running!'"}
-knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/beepr.jpg')
+knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/beepr.jpg')
 ```
 ]
 
@@ -106,7 +106,7 @@ knitr::include_graphics("https://community-cdn.rstudio.com/uploads/default/origi
 
 knitr::include_graphics("https://africa-r.org/author/avatar_hu73f0541d09985efc907138a8670305ca_97180_270x270_fill_lanczos_center_2.png")
 
-knitr::include_graphics("https://arab-r.github.io/ArabR-Website/img/arab-r-logo2.png")
+knitr::include_graphics("https://arabr.github.io/img/arab-r-logo2.png")
 
 knitr::include_graphics("https://pbs.twimg.com/profile_images/1491075015730954244/pzpN5s2V_400x400.jpg")
 
@@ -122,7 +122,7 @@ knitr::include_graphics("https://github.com/LatinR/latinr/raw/master/man/figures
 
 .pull-right[
 ```{r out.width='60%', echo=F, fig.alt="RStats community logo again by Allison Horst"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/code_hero.jpg")
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/code_hero.jpg")
 ```
 ]
 
@@ -138,7 +138,7 @@ knitr::include_graphics("img/202202-rladies-meetup-stats.png")
 
 .center[
 ```{r, out.width='70%', echo=FALSE, fig.align='bottom', fig.alt="R Knowledge Rollercoaster: An illustrated cartoon graph with 'How much I think I know about R' on the y-axis, with axis labels at 'I know nothing' and 'I know lots', versus 'time' on the x-axis. The line varies widely between the two. Above the line are emoji-like faces, showing uncertainty and hope early on. At a second peak is the label 'join R community on twitter', with a 'mind-blown' emoji face. The line quickly descends, but with a happy looking emoji character sliding down it."}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/r_rollercoaster.png")
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/r_rollercoaster.png")
 ```
 ]
 
@@ -255,7 +255,7 @@ DT::datatable(
 # Tidying your data
 .center[
 ```{r echo=F, out.width='70%', fig.alt="There are two sets of anthropomorphized data tables. The top group of three tables are all rectangular and smiling, with a shared speech bubble reading 'our columns are variables and our rows are observations!'. Text to the left of that group reads 'The standard structure of tidy data means that 'tidy datasets are all alike...' The lower group of four tables are all different shapes, look ragged and concerned, and have different speech bubbles reading (from left to right) 'my column are values and my rows are variables', 'I have variables in columns AND in rows', 'I have multiple variables in a single column', and 'I don’t even KNOW what my deal is.' Next to the frazzled data tables is text '...but every messy dataset is messy in its own way. -Hadley Wickham.'"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/tidydata_2.jpg")
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/tidydata_2.jpg")
 ```
 ]
 
@@ -301,7 +301,7 @@ group_by()	# GROUP data into rows with the same value of variable (COLUMN)
 **w/ filter**
 .center[
 ```{r echo=F, out.width='70%', fig.alt="Allison Horst dply::filter. Cartoon showing three fuzzy monsters either selecting or crossing out rows of a data table. If the type of animal in the table is 'otter' and the site is 'bay', a monster is drawing a purple rectangle around the row. If those conditions are not met, another monster is putting a line through the column indicating it will be excluded. Stylized text reads 'dplyr::filter() - keep rows that satisfy your conditions.'"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/dplyr_filter.jpg")
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/dplyr_filter.jpg")
 ```
 ]
 
@@ -480,8 +480,8 @@ my_full_path <- here("gapminder")
 ---
 # Have fun w/ programming
 .center[
-```{r echo=F, out.width='70%', fig.alt="GAdenBuie Tidyexplain gif for long to wide data transformation"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/other-stats-artwork/debugging.jpg")
+```{r echo=F, out.width='70%', fig.alt="Allison Horst's image on the phases of debugging!"}
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/other-stats-artwork/debugging.jpg")
 ```
 ]
 
@@ -492,14 +492,14 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 - Create a **Website** | [jravilab.github.io](//jravilab.github.io)
 - **Present** your data | this one, [jananiravi.github.io/R_intro](//jananiravi.github.io/R_intro)
 - Create a **Web application**  | [jravilab.org/molevolvr](http://jravilab.org/molevolvr)
-- Write your **Thesis**
-- Material: github.com/rladies-eastlansing
+- Write your **Thesis** or an **e-book** | [jravilab.github.io/lab_docs](https://jravilab.github.io/lab_docs)
+- Material: <github.com/rladies-eastlansing>
 ]
 
 .right[
 
 ```{r echo=F, eval=F,out.width='20%', fig.alt="You can do it"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/r_first_then.png")
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/r_first_then.png")
 #; A digital cartoon with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says: at first I was like... The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads: but now it's like...
 ```
 
