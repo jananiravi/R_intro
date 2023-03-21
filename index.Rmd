@@ -1,8 +1,8 @@
 ---
 title: "R@GARD | Intro to R programming"
-subtitle: "<br/>"
-author: "Jill Bilodeaux & Kewalin Samart<br/>" #⚔
-institute: "University of Colorado School of Medicine<br/>"
+subtitle: "⚔"
+author: "Jill Bilodeaux, Kewalin Samart <br/>JRaviLab"
+institute: "University of Colorado Anschutz Medical Campus<br/>"
 date: "jill.bilodeaux@cuanschutz.edu | kewalin.samart@cuanschutz.edu"
 
 output:
@@ -442,7 +442,7 @@ ggplot(gapminder,
 [**The plot**](https://jananiravi.github.io/workshop-tidyverse/gapminder/workshop-tidyverse-gapminder#gganimate)
 
 ```{r gapminder-gganimate2, layout="l-body-outset", out.width='80%', echo=F, eval=T, message=FALSE, warning=FALSE}
-library(gganimate); library(tidyverse)
+library(gganimate); library(tidyverse); library(gifski)
 ggplot(gapminder,
        aes(gdpPercap, lifeExp,
            size = pop, colour = country)) +
@@ -495,44 +495,47 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 
 ---
 # Do more with R
-.left[
+
+.pull-left[
 - Draft a **Manuscript** | [jravilab.github.io/connectivity_scores](//jravilab.github.io/connectivity_scores)
 - Create a **Website** | [jravilab.github.io](//jravilab.github.io)
-- **Present** your data | this one, [jananiravi.github.io/R_intro](//jananiravi.github.io/R_intro)
+- **Present** your data | e.g., [jravilab.github.io/R_intro](//jravilab.github.io/R_intro)
 - Create a **Web application**  | [jravilab.org/molevolvr](http://jravilab.org/molevolvr)
-- Write your **Thesis** or an **e-book** | [jravilab.github.io/lab_docs](https://jravilab.github.io/lab_docs)
+- Write your **Thesis** or an **e-Book** | [jravilab.github.io/lab_docs](https://jravilab.github.io/lab_docs)
 - Material: [github.com/rladies-eastlansing](www.github.com/rladies-eastlansing)
-]
 
-.right[
-
-```{r echo=F, eval=F,out.width='20%', fig.alt="You can do it"}
-knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/r_first_then.png")
-#; A digital cartoon with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says: at first I was like... The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads: but now it's like...
+```{r, out.width='40%', echo=FALSE, fig.alt="RStats community by Allison Horst: A person in a cape that reads 'code hero' who looks like they are flying through the air while typing on a computer while saying 'I’m doing a think all on my own!' The coder’s arms and legs have ropes attached to two hot air balloons lifting them up, with labels on the balloons including 'teachers', 'bloggers', 'friends', 'developers'. Below the code hero, several people carry a trampoline with labels 'support' and 'community' that will catch them if they fall"}
+knitr::include_graphics('https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/code_hero.jpg')
 ```
-
 ]
 
 .pull-right[
-```{r echo=F, fig.align='right', out.width='40%', fig.alt="Baracktocat, GitHub Octocat with 'Yes we code' election themed poster"}
-knitr::include_graphics("https://octodex.github.com/images/baracktocat.jpg")
+```{r echo=F, eval=T, out.width='80%', fig.alt="A digital cartoon by Allison Horst with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says: at first I was like... The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads: but now it's like..."}
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/r_first_then.png")
 ```
 ]
 
 ---
 # Acknowledgments
 - GARD 2023 | Chelsie Boodoo
-- Content by Dr. Janani Ravi | janani.ravi@cuanschutz.edu | [@jravilab](//twitter.com/jravilab) | [jravilab.github.io](//jravilab.github.io)
+- Content by Dr. Janani Ravi | Janani.Ravi@cuanschutz.edu | [@janani137](//twitter.com/janani137) | [jravilab.github.io](//jravilab.github.io)
 - Slides created via the R package [xaringan](https://github.com/yihui/xaringan) built with [remark.js](https://remarkjs.com), [knitr](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
-- Cartoons from Allison Horst.
+- Cartoons from Allison Horst; Tidyverse GIFs by Garrick Aden-Buie.
 - [JRaviLab](https://jravilab.github.io) | [Krishnan Lab](https://thekrishnanlab.org)
-- [R-Ladies East Lansing](https://rladies-eastlansing.github.io) | [Women+ Data SCience](https://women-plus-datascience.github.io) | [AsiaR](//github.com/AsiaR-community)
+- [R-Ladies East Lansing](https://github.com/rladies-eastlansing) | [Women+ Data Science](https://github.com/women-plus-datascience) | [AsiaR](//github.com/AsiaR-community)
 
 .pull-left[
 ### How to reach us
-jill.bilodeaux@cuanschutz.edu 
-kewalin.samart@cuanschutz.edu | [@KewalinSamart](//twitter.com/KewalinSamart) 
-
-You can access all relevant material pertaining to this workshop [here](https://github.com/jananiravi/R_intro).
+Jill.Bilodeaux@cuanschutz.edu <br>
+Kewalin.Samart@cuanschutz.edu | [@KewalinSamart](//twitter.com/KewalinSamart)  <br>
+JRaviLab on [Twitter](//twitter.com/JRaviLab) | [GitHub](//github.com/JRaviLab) | [Mastodon](https://genomic.social/@jravilab)
 ]
 
+.pull-right[
+
+```{r echo=F, out.width='40%', fig.align='right', fig.alt="Baracktocat, GitHub Octocat with 'Yes we code' election themed poster"}
+knitr::include_graphics("https://octodex.github.com/images/baracktocat.jpg")
+```
+]
+
+You can access all relevant material pertaining to this workshop [here](https://github.com/jravilab/R_intro).
