@@ -129,9 +129,8 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 
 --
 
-```{r out.width='50%', echo=F, fig.alt="RUG and RLadies chapter stats"}
-knitr::include_graphics("img/202202-rugs-meetup-stats.png")
-knitr::include_graphics("img/202202-rladies-meetup-stats.png")
+```{r out.width='200%', echo=F, fig.alt="RUG and RLadies chapter stats"}
+knitr::include_graphics("img/2023_rladies_rugs_dashboard.jpg")
 ```
 
 ---
@@ -172,11 +171,16 @@ knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/57299a1dcd979c623
 ```
 --
 
-### Install tidyverse and gapminder (data) packages
+### Install tidyverse and gapminder (data) and other required packages
 
 ```{r installation, eval=F, echo=T}
 install.packages("tidyverse") # for data wrangling
 install.packages("gapminder") # sample dataset
+
+install.packages("rmarkdown", # Convert R Markdown documents into a variety of formats
+                 "knitr",     # for dynamic report generation
+                 "gganimate", # for animation
+                 "gifski")    # gganimate's dependency 
 ```
 
 ```{r echo=FALSE, out.width='10%', fig.alt="tidyverse package hex from RStudio"}
