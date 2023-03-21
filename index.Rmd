@@ -1,9 +1,10 @@
 ---
 title: "R@GARD | Intro to R programming"
 subtitle: "<br/>"
-author: "JANANI RAVI<br/>" #⚔
-institute: "Michigan State University | RLEL, W+DS, AsiaR<br/>"
-date: "janani@msu.edu | @janani137 | jravilab.github.io"
+author: "Jill Bilodeaux & Kewalin Samart<br/>" #⚔
+institute: "University of Colorado School of Medicine<br/>"
+date: "jill.bilodeaux@cuanschutz.edu | kewalin.samart@cuanschutz.edu"
+
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -459,6 +460,13 @@ ggplot(gapminder,
 ```
 
 ---
+
+```{r eval=F, out.width='100%', fig.height=6, eval=require('leaflet')}
+library(leaflet)
+leaflet() %>% addTiles() %>% setView(-93.65, 42.0285, zoom = 17)
+```
+
+---
 # Saving your data
 ```{r ggsave, eval=F, echo=TRUE}
 library(tidyverse)
@@ -493,7 +501,7 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 - **Present** your data | this one, [jananiravi.github.io/R_intro](//jananiravi.github.io/R_intro)
 - Create a **Web application**  | [jravilab.org/molevolvr](http://jravilab.org/molevolvr)
 - Write your **Thesis** or an **e-book** | [jravilab.github.io/lab_docs](https://jravilab.github.io/lab_docs)
-- Material: <github.com/rladies-eastlansing>
+- Material: [github.com/rladies-eastlansing](www.github.com/rladies-eastlansing)
 ]
 
 .right[
@@ -505,21 +513,6 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 
 ]
 
----
-# Acknowledgments
-- GARD 2022 | Vangie & Chelsie
-- Slides created via the R package [xaringan](https://github.com/yihui/xaringan) built with [remark.js](https://remarkjs.com), [knitr](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
-- Cartoons from Allison Horst.
-- [JRaviLab](https://jravilab.github.io) | [Krishnan Lab](https://thekrishnanlab.org)
-- [R-Ladies East Lansing](https://rladies-eastlansing.github.io) | [Women+ Data SCience](https://women-plus-datascience.github.io) | [AsiaR](//github.com/AsiaR-community)
-
-.pull-left[
-### How to reach us
-janani@msu.edu | [@jravilab](//twitter.com/jravilab) | [jravilab.github.io](//jravilab.github.io)
-
-You can access all relevant material pertaining to this workshop [here](https://github.com/jananiravi/R_intro).
-]
-
 .pull-right[
 ```{r echo=F, fig.align='right', out.width='40%', fig.alt="Baracktocat, GitHub Octocat with 'Yes we code' election themed poster"}
 knitr::include_graphics("https://octodex.github.com/images/baracktocat.jpg")
@@ -527,12 +520,19 @@ knitr::include_graphics("https://octodex.github.com/images/baracktocat.jpg")
 ]
 
 ---
+# Acknowledgments
+- GARD 2023 | Chelsie Boodoo
+- Content by Dr. Janani Ravi | janani.ravi@cuanschutz.edu | [@jravilab](//twitter.com/jravilab) | [jravilab.github.io](//jravilab.github.io)
+- Slides created via the R package [xaringan](https://github.com/yihui/xaringan) built with [remark.js](https://remarkjs.com), [knitr](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
+- Cartoons from Allison Horst.
+- [JRaviLab](https://jravilab.github.io) | [Krishnan Lab](https://thekrishnanlab.org)
+- [R-Ladies East Lansing](https://rladies-eastlansing.github.io) | [Women+ Data SCience](https://women-plus-datascience.github.io) | [AsiaR](//github.com/AsiaR-community)
 
----
+.pull-left[
+### How to reach us
+jill.bilodeaux@cuanschutz.edu 
+kewalin.samart@cuanschutz.edu | [@KewalinSamart](//twitter.com/KewalinSamart) 
 
----
+You can access all relevant material pertaining to this workshop [here](https://github.com/jananiravi/R_intro).
+]
 
-```{r eval=F, out.width='100%', fig.height=6, eval=require('leaflet')}
-library(leaflet)
-leaflet() %>% addTiles() %>% setView(-93.65, 42.0285, zoom = 17)
-```
