@@ -55,7 +55,6 @@ style_duo_accent(
 ### R is well-supported
 ]
 
---
 .pull-right[
 ### R has a strong community!
 ```{r, out.width='60%', echo=FALSE, fig.align='bottom', fig.alt="RStats community by Allison Horst: A person in a cape that reads 'code hero' who looks like they are flying through the air while typing on a computer while saying 'I’m doing a think all on my own!' The coder’s arms and legs have ropes attached to two hot air balloons lifting them up, with labels on the balloons including 'teachers', 'bloggers', 'friends', 'developers'. Below the code hero, several people carry a trampoline with labels 'support' and 'community' that will catch them if they fall"}
@@ -119,19 +118,22 @@ knitr::include_graphics("https://github.com/LatinR/latinr/raw/master/man/figures
 #"https://www.r-consortium.org/wp-content/uploads/sites/13/2016/09/RConsortium_Horizontal_Pantone.png")
 
 ```
+<br> <br>
+Find your local R chapter on Twitter, [Meetup.com](//meetup.com), [RLadies.org](//rladies.org), or the [R community explorer](https://benubah.github.io/r-community-explorer)!
+
+
 ]
 
 .pull-right[
 ```{r out.width='60%', echo=F, fig.alt="RStats community logo again by Allison Horst"}
 knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/code_hero.jpg")
 ```
-]
 
---
-
-```{r out.width='200%', echo=F, fig.alt="RUG and RLadies chapter stats"}
-knitr::include_graphics("img/2023_rladies_rugs_dashboard.jpg")
+```{r out.width='80%', echo=F, fig.alt="RUG and RLadies chapter stats"}
+knitr::include_graphics("img/202303-rladies-dashboard.png")
+knitr::include_graphics("img/202303-rugs-dashboard.png")
 ```
+]
 
 ---
 # We all go through the 'stages of R'
@@ -147,11 +149,13 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 #### Data wrangling | knowing about your data
 #### Data analysis & summarization | including RStats
 #### Data visualization & graphical summaries
-#### Reproducible Research
-#### Manuscripts, Books, Thesis
+#### Reproducible research
+#### Manuscripts, books, thesis
 #### Interactive web apps
 #### Webpages, blogs
 #### and more...
+
+_We've shared a few examples for each towards the end._
 
 ---
 class: inverse, center, middle
@@ -163,12 +167,6 @@ class: inverse, center, middle
 # First steps...
 ### Install R/RStudio
 You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
-
-```{r out.width='10%', fig.alt="R programming logo in blue", echo=FALSE}
-#knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1448px-R_logo.svg.png?20160212050515")
-knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/57299a1dcd979c623325f11bf5e5ce60f3d4eb00/e4602/wp-content/uploads/2018/10/black.png")
-
-```
 --
 
 ### Install tidyverse and gapminder (data) and other required packages
@@ -176,17 +174,21 @@ knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/57299a1dcd979c623
 ```{r installation, eval=F, echo=T}
 install.packages("tidyverse") # for data wrangling
 install.packages("gapminder") # sample dataset
-
-install.packages("rmarkdown", # Convert R Markdown documents into a variety of formats
+install.packages("rmarkdown", # Convert R Markdown documents into various formats
                  "knitr",     # for dynamic report generation
                  "gganimate", # for animation
                  "gifski")    # gganimate's dependency 
 ```
 
+```{r out.width='20%', fig.alt="R programming logo in blue", echo=FALSE}
+#knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1448px-R_logo.svg.png?20160212050515")
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/57299a1dcd979c623325f11bf5e5ce60f3d4eb00/e4602/wp-content/uploads/2018/10/black.png")
+
+```
 ```{r echo=FALSE, out.width='10%', fig.alt="tidyverse package hex from RStudio"}
 knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2014/04/tidyverse.png")
 ```
-```{r echo=FALSE, out.width='40%', fig.alt="gapminder logo from website (yellow bordered text) for gapminder package"}
+```{r echo=FALSE, out.width='30%', fig.alt="gapminder logo from website (yellow bordered text) for gapminder package"}
 knitr::include_graphics("https://www.gapminder.org/wp-content/themes/gapminder2/images/gapminder-logo.svg")
 ```
 
@@ -202,9 +204,9 @@ read_delim(file="my_data.txt", col_names=T,
 # Other useful packages
 # readxl by Jenny Bryan
 read_excel(path="path/to/excel.xls",
-					sheet=1,
-					range="A1:D50",
-					col_names=T)
+           sheet=1,
+           range="A1:D50",
+           col_names=T)
 ```
 
 ---
@@ -225,9 +227,9 @@ gapminder::gapminder 			# Data is in a cleaned up 'tibble' format by default
 
 --
 ```{r eval=F}
-str(gapminder)		# Structure of the dataframe
-head(gapminder)		# Shows the top few observations (rows) of your data frame
-glimpse(gapminder)	# Info-dense summary of the data
+str(gapminder)      # Structure of the dataframe
+head(gapminder)     # Shows the top few observations (rows) of your data frame
+glimpse(gapminder)  # Info-dense summary of the data
 ```
 
 ---
@@ -251,8 +253,7 @@ paged_table(gapminder::gapminder)
 **w/ dynamic filtering**
 ```{r eval=require('DT'), tidy=FALSE}
 library(gapminder)
-DT::datatable(
-  head(gapminder, 1000),
+DT::datatable(head(gapminder, 1000),
   fillContainer = FALSE, options = list(pageLength = 5))
 ```
 
@@ -269,8 +270,8 @@ knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw
 ```{r tidyr, echo=TRUE, eval=FALSE}
 pivot_longer()  # wide -> long
 pivot_wider()   # long -> wide
-separate()	    # Separate 1 COLUMN -> many COLUMNS
-unite()		      # Unite several COLUMNS -> 1 COLUMN
+separate()      # Separate 1 COLUMN -> many COLUMNS
+unite()         # Unite several COLUMNS -> 1 COLUMN
 ```
 
 ---
@@ -282,23 +283,15 @@ knitr::include_graphics("https://github.com/gadenbuie/tidyexplain/raw/main/image
 ]
 
 ---
-# Tidying your data
-.center[
-```{r echo=F, out.width='50%', fig.alt="GAdenBuie Tidyexplain gif for gather & spread data transformation"}
-knitr::include_graphics("https://github.com/gadenbuie/tidyexplain/raw/main/images/tidyr-spread-gather.gif")
-```
-]
-
----
 # Wrangling your data
 ```{r dplyr, echo=TRUE, eval=FALSE}
-filter()	# PICK observations by their values | ROWS
-select()	# PICK variables by their names | COLUMNS
-mutate()	# CREATE new variables w/ functions of existing variables | COLUMNS
-transmute()	# COMPUTE 1 or more COLUMNS but drop original columns
-arrange()	# REORDER the ROWS
-summarize()	# COLLAPSE many values to a single SUMMARY
-group_by()	# GROUP data into rows with the same value of variable (COLUMN)
+filter()    # PICK observations by their values | ROWS
+select()    # PICK variables by their names | COLUMNS
+mutate()    # CREATE new variables w/ functions of existing variables | COLUMNS
+transmute() # COMPUTE 1 or more COLUMNS but drop original columns
+arrange()   # REORDER the ROWS
+summarize() # COLLAPSE many values to a single SUMMARY
+group_by()  # GROUP data into rows with the same value of variable (COLUMN)
 ```
 
 ---
@@ -318,12 +311,12 @@ head(gapminder)	# Snapshot of the dataframe
 filter(gapminder, year==1962)
 
 # Can be rewritten using "Piping" %>%
-gapminder %>%	# Pipe ('then') operator to serially connect operations
+gapminder %>%	  # Pipe ('then') operator to serially connect operations
 	filter(year==1962)
+
 # Filter for China in 2002
 gapminder %>%
-	filter(year==2002,
-				 country=="China")
+	filter(year==2002, country=="China")
 ```
 
 ---
@@ -331,19 +324,19 @@ gapminder %>%
 ```{r filter2, echo=F, eval=T}
 gapminder %>%	# Pipe ('then') operator to serially connect operations
 	filter(year==1962)
-```
-***
-```{r filter3, echo=F, eval=T}
+
 # Filter for China in 2002
 gapminder %>%
-	filter(year==2002,
-				 country=="China")
+	filter(year==2002, country=="China")
 ```
 
 ---
 # Math Expressions
 
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
+You can write LaTeX math expressions inside a pair of dollar signs, <br>
+_e.g.,_ `$\alpha+\beta$` renders $\alpha+\beta$.
+
+You can use the display style with double dollar signs (`$$`):
 
 ```{}
 $$EWCos_{j} = Cos(v_{dis}(S),EWlogFC_{j})$$
